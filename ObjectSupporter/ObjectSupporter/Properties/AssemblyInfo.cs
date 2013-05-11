@@ -6,7 +6,7 @@ using System.Runtime.CompilerServices;
 // set of attributes. Change these attribute values to modify the information
 // associated with an assembly.
 [assembly: AssemblyTitle("ObjectSupporter")]
-[assembly: AssemblyDescription("")]
+[assembly: AssemblyDescription("Extracts name of the object's elements like: properties, methods etc.")]
 [assembly: AssemblyConfiguration("")]
 [assembly: AssemblyCompany("Adrian Rojek @ Future Processing")]
 [assembly: AssemblyProduct("ObjectSupporter")]
