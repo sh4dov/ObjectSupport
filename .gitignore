@@ -3,3 +3,7 @@
 /ObjectSupporter/*.suo
 
 /ObjectSupporter/out/*
+
+/ObjectSupporter/TestResults/*
+
+/ObjectSupporter/*.vsmdi

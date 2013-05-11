@@ -7,11 +7,19 @@
     <authors>$author$</authors>
     <owners>$author$</owners>
     <licenseUrl>http://opensource.org/licenses/ms-pl.html</licenseUrl>
-    <projectUrl>https://github.com/sh4dov/ObjectSupport</projectUrl>
+    <projectUrl>https://github.com/sh4dov/ObjectSupport/wiki</projectUrl>
     <iconUrl>https://github.com/sh4dov/ObjectSupport/raw/master/ObjectSupporter/ObjectSupporter/ObjectSupporter.ico</iconUrl>
     <requireLicenseAcceptance>false</requireLicenseAcceptance>
     <description>$description$</description>
-    <releaseNotes>Allowed to extract name directly from Expression object.</releaseNotes>
+    <releaseNotes>
+      Features:
+      * Extract name of the local property: ObjectSupport.GetName(() => LocalProperty)
+      * Extract name of the local method: ObjectSupport.GetName(() => LocalMethod())
+      * Extract name of the variable or argument: ObjectSupport.GetName(() => variable)
+      * Extract name of the constant, enum values etc.: ObjectSupport.GetName(() => SampleEnum.EnumValue1)
+      * Extract name of the class property: ObjectSupport.GetName(c => c.Property)
+      * Extract name of the class method: ObjectSupport.GetName(c => c.Method())
+    </releaseNotes>
     <copyright>Copyright 2013</copyright>
     <tags>Object Support helper</tags>
   </metadata>

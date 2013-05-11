@@ -11,7 +11,8 @@ namespace ObjectSupporter.ExpressionNameStrategies
                 new MemberExpressionNameStrategy(),
                 new ConstantExpressionNameStrategy(),
                 new BinaryExpressionNameStrategy(),
-                new MethodCallExpressionNameStrategy()
+                new MethodCallExpressionNameStrategy(),
+                new UnaryExpressionNameStrategy()
             };
 
         public bool CanHandle(Expression expression)

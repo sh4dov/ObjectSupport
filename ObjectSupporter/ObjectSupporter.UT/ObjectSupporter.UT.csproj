@@ -51,9 +51,11 @@
     </Otherwise>
   </Choose>
   <ItemGroup>
+    <Compile Include="ExpressionNameStrategies\BinaryExpressionNameStrategyTest.cs" />
     <Compile Include="ExpressionNameStrategies\ConstantExpressionNameStrategyTest.cs" />
     <Compile Include="ExpressionNameStrategies\MemberExpressionNameStrategyTest.cs" />
     <Compile Include="ExpressionNameStrategies\MethodCallExpressionNameStrategyTest.cs" />
+    <Compile Include="ExpressionNameStrategies\UnaryExpressionNameStrategyTest.cs" />
     <Compile Include="ObjectSupportTest.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>

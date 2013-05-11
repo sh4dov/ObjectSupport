@@ -54,9 +54,7 @@ namespace ObjectSupporter.UT
         [TestMethod]
         public void ShouldReturnConstantValueName()
         {
-            Expression<Func<bool>> expression = () => true;
-
-            var name = ObjectSupport.GetName(expression);
+            var name = ObjectSupport.GetName(() => true);
 
             Assert.AreEqual("True", name);
         }
@@ -76,6 +74,13 @@ namespace ObjectSupporter.UT
         public void ShouldThrowExceptionWhenParameterIsNotSupported()
         {
             ObjectSupport.GetName((Expression)null);
+        }
+
+        [TestMethod]
+        [ExpectedException(typeof(ArgumentNullException))]
+        public void ShouldThrowExceptionWhenExpressionIsNull()
+        {
+            ObjectSupport.GetName((LambdaExpression)null);
         }
 
         private void LocalMethod1()
