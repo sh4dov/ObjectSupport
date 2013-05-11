@@ -4,6 +4,11 @@ namespace ObjectSupporter.Sample
 {
     internal class Program
     {
+        private enum SampleEnum
+        {
+            EnumValue1
+        }
+
         protected object LocalProperty { get; private set; }
 
         private static void Main(string[] args)
@@ -15,6 +20,11 @@ namespace ObjectSupporter.Sample
         {
         }
 
+        private int LocalMethodWithArguments(int arg1, int arg2)
+        {
+            return 0;
+        }
+
         private void Tests()
         {
             string name;
@@ -22,8 +32,11 @@ namespace ObjectSupporter.Sample
             name = ObjectSupport.GetName(() => LocalProperty);
             Console.WriteLine("Local property name: {0}", name);
 
-            name = ObjectSupport.GetName(() => LocalMethod());
+            name = ObjectSupport.GetName<Action>(() => LocalMethod);
             Console.WriteLine("Local method name: {0}", name);
+
+            name = ObjectSupport.GetName<Func<int, int, int>>(() => LocalMethodWithArguments);
+            Console.WriteLine("Local method with arguments name: {0}", name);
 
             var variable = new object();
             name = ObjectSupport.GetName(() => variable);
@@ -41,13 +54,11 @@ namespace ObjectSupporter.Sample
             name = ObjectSupport.GetName<SampleClass>(c => c.Property);
             Console.WriteLine("Class property name: {0}", name);
 
-            name = ObjectSupport.GetName<SampleClass>(c => c.Method());
+            name = ObjectSupport.GetName<SampleClass, Action>(c => c.Method);
             Console.WriteLine("Class method name: {0}", name);
-        }
 
-        private enum SampleEnum
-        {
-            EnumValue1
+            name = ObjectSupport.GetName<SampleClass, Func<string, string, int>>(c => c.MethodWithArguments);
+            Console.WriteLine("Class method with arguments name: {0}", name);
         }
 
         private class SampleClass
@@ -56,6 +67,11 @@ namespace ObjectSupporter.Sample
 
             public void Method()
             {
+            }
+
+            public int MethodWithArguments(string arg1, string arg2)
+            {
+                return 0;
             }
         }
     }

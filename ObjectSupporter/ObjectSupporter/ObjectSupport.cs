@@ -14,7 +14,17 @@ namespace ObjectSupporter
             return GetName((LambdaExpression)expression);
         }
 
+        public static string GetName<TClass, TResult>(Expression<Func<TClass, TResult>> expression)
+        {
+            return GetName((LambdaExpression)expression);
+        }
+
         public static string GetName<T>(Expression<Action<T>> expression)
+        {
+            return GetName((LambdaExpression)expression);
+        }
+
+        public static string GetName<TResult>(Expression<Func<TResult>> expression)
         {
             return GetName((LambdaExpression)expression);
         }
