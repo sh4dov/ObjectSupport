@@ -9,17 +9,37 @@ namespace ObjectSupporter
     {
         private static readonly ExpressionNameStrategy _expressionNameStrategy = new ExpressionNameStrategy();
 
+        public static string GetName<T>(Expression<Func<T, object>> expression)
+        {
+            return GetName((LambdaExpression)expression);
+        }
+
         public static string GetName<T>(Expression<Action<T>> expression)
+        {
+            return GetName((LambdaExpression)expression);
+        }
+
+        public static string GetName(Expression<Func<object>> expression)
+        {
+            return GetName((LambdaExpression)expression);
+        }
+
+        public static string GetName(Expression<Action> expression)
+        {
+            return GetName((LambdaExpression)expression);
+        }
+
+        private static string GetName(LambdaExpression expression)
         {
             if (expression == null)
             {
-                throw new ArgumentNullException(Resources.ArgumentCannotBeNull, GetName(() => expression));
+                throw new ArgumentNullException(GetName(() => expression), Resources.ArgumentCannotBeNull);
             }
 
             return GetName(expression.Body);
         }
 
-        internal static string GetName<T>(Expression<Func<T>> expression)
+        private static string GetName<T>(Expression<Func<T>> expression)
         {
             return GetName(expression.Body);
         }
