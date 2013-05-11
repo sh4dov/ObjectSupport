@@ -1,4 +1,6 @@
-﻿using Microsoft.VisualStudio.TestTools.UnitTesting;
+﻿using System;
+using System.Linq.Expressions;
+using Microsoft.VisualStudio.TestTools.UnitTesting;
 
 namespace ObjectSupporter.UT
 {
@@ -47,6 +49,33 @@ namespace ObjectSupporter.UT
             var name = ObjectSupport.GetName(() => variable);
 
             Assert.AreEqual("variable", name);
+        }
+
+        [TestMethod]
+        public void ShouldReturnConstantValueName()
+        {
+            Expression<Func<bool>> expression = () => true;
+
+            var name = ObjectSupport.GetName(expression);
+
+            Assert.AreEqual("True", name);
+        }
+
+        [TestMethod]
+        public void ShouldReturnNameFromExpression()
+        {
+            Expression<Func<object>> expression = () => LocalProperty;
+
+            var name = ObjectSupport.GetName(expression.Body);
+
+            Assert.AreEqual("LocalProperty", name);
+        }
+
+        [TestMethod]
+        [ExpectedException(typeof(InvalidOperationException))]
+        public void ShouldThrowExceptionWhenParameterIsNotSupported()
+        {
+            ObjectSupport.GetName((Expression)null);
         }
 
         private void LocalMethod1()

@@ -29,22 +29,17 @@ namespace ObjectSupporter
             return GetName((LambdaExpression)expression);
         }
 
-        private static string GetName(LambdaExpression expression)
+        public static string GetName(LambdaExpression expression)
         {
             if (expression == null)
             {
-                throw new ArgumentNullException(GetName(() => expression), Resources.ArgumentCannotBeNull);
+                throw new ArgumentNullException(GetNameInternal(() => expression), Resources.ArgumentCannotBeNull);
             }
 
             return GetName(expression.Body);
         }
 
-        private static string GetName<T>(Expression<Func<T>> expression)
-        {
-            return GetName(expression.Body);
-        }
-
-        private static string GetName(Expression expression)
+        public static string GetName(Expression expression)
         {
             if (_expressionNameStrategy.CanHandle(expression))
             {
@@ -52,6 +47,11 @@ namespace ObjectSupporter
             }
 
             throw new InvalidOperationException(Resources.InvalidParameterType);
+        }
+
+        private static string GetNameInternal<T>(Expression<Func<T>> expression)
+        {
+            return GetName(expression.Body);
         }
     }
 }

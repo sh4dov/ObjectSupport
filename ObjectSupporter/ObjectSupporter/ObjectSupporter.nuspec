@@ -11,8 +11,8 @@
     <iconUrl>https://github.com/sh4dov/ObjectSupport/raw/master/ObjectSupporter/ObjectSupporter/ObjectSupporter.ico</iconUrl>
     <requireLicenseAcceptance>false</requireLicenseAcceptance>
     <description>$description$</description>
-    <releaseNotes>First version.</releaseNotes>
+    <releaseNotes>Allowed to extract name directly from Expression object.</releaseNotes>
     <copyright>Copyright 2013</copyright>
-    <tags>Object Support</tags>
+    <tags>Object Support helper</tags>
   </metadata>
 </package>

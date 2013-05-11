@@ -1,0 +1,2 @@
+NuGet.exe pack ObjectSupporter.csproj
+NuGet.exe push ObjectSupporter.1.x.0.0.nupkg
