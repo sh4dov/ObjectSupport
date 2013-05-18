@@ -8,7 +8,7 @@ using System.Runtime.CompilerServices;
 [assembly: AssemblyTitle("ObjectSupporter")]
 [assembly: AssemblyDescription("Extracts name of the object's elements like: properties, methods, variables, constants etc.")]
 [assembly: AssemblyConfiguration("")]
-[assembly: AssemblyCompany("Adrian Rojek @ Future Processing")]
+[assembly: AssemblyCompany("Adrian Rojek")]
 [assembly: AssemblyProduct("ObjectSupporter")]
 [assembly: AssemblyCopyright("Copyright ©  2013")]
 [assembly: AssemblyTrademark("")]
@@ -25,6 +25,6 @@ using System.Runtime.CompilerServices;
 // You can specify all the values or you can default the Build and Revision Numbers
 // by using the '*' as shown below:
 // [assembly: AssemblyVersion("1.0.*")]
-[assembly: AssemblyVersion("1.5.0.0")]
-[assembly: AssemblyFileVersion("1.5.0.0")]
+[assembly: AssemblyVersion("1.5.0.1")]
+[assembly: AssemblyFileVersion("1.5.0.1")]
 [assembly: InternalsVisibleTo("ObjectSupporter.UT")]
