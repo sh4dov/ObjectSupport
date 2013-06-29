@@ -20,7 +20,7 @@ namespace ObjectSupporter.UT
         [TestMethod]
         public void ShouldReturnLocalPropertyName()
         {
-            var name = ObjectSupport.GetName(() => LocalProperty);
+            var name = ObjectSupport.GetName<object>(() => LocalProperty);
 
             Assert.AreEqual("LocalProperty", name);
         }

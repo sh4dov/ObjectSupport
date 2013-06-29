@@ -29,17 +29,17 @@ namespace ObjectSupporter.Sample
         {
             string name;
 
-            name = ObjectSupport.GetName(() => LocalProperty);
+            name = ObjectSupport.Property.GetName(() => LocalProperty);
             Console.WriteLine("Local property name: {0}", name);
 
-            name = ObjectSupport.GetName<Action>(() => LocalMethod);
+            name = ObjectSupport.Method.GetName<Action>(() => LocalMethod);
             Console.WriteLine("Local method name: {0}", name);
 
-            name = ObjectSupport.GetName<Func<int, int, int>>(() => LocalMethodWithArguments);
+            name = ObjectSupport.Method.GetName<Func<int, int, int>>(() => LocalMethodWithArguments);
             Console.WriteLine("Local method with arguments name: {0}", name);
 
             var variable = new object();
-            name = ObjectSupport.GetName(() => variable);
+            name = ObjectSupport.Variable.GetName(() => variable);
             Console.WriteLine("Variable name: {0}", name);
 
             name = ObjectSupport.GetName(() => true);
@@ -51,13 +51,13 @@ namespace ObjectSupporter.Sample
             name = ObjectSupport.GetName(() => null);
             Console.WriteLine("Null name: {0}", name);
 
-            name = ObjectSupport.GetName<SampleClass>(c => c.Property);
+            name = ObjectSupport.Property.GetName<SampleClass, object>(c => c.Property);
             Console.WriteLine("Class property name: {0}", name);
 
-            name = ObjectSupport.GetName<SampleClass, Action>(c => c.Method);
+            name = ObjectSupport.Method.GetName<SampleClass, Action>(c => c.Method);
             Console.WriteLine("Class method name: {0}", name);
 
-            name = ObjectSupport.GetName<SampleClass, Func<string, string, int>>(c => c.MethodWithArguments);
+            name = ObjectSupport.Method.GetName<SampleClass, Func<string, string, int>>(c => c.MethodWithArguments);
             Console.WriteLine("Class method with arguments name: {0}", name);
         }
 
