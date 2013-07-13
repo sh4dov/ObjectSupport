@@ -13,6 +13,11 @@ namespace ObjectSupporter
         private static readonly Lazy<ISupport> _lazyMethodSupport = new Lazy<ISupport>(() => new MethodSupport());
         private static readonly Lazy<ISupport> _lazyPropertySupport = new Lazy<ISupport>(() => new PropertySupport());
 
+        public static ISupport Argument
+        {
+            get { return _lazyFieldSupport.Value; }
+        }
+
         public static ISupport Field
         {
             get { return _lazyFieldSupport.Value; }
@@ -21,11 +26,6 @@ namespace ObjectSupporter
         public static ISupport Method
         {
             get { return _lazyMethodSupport.Value; }
-        }
-
-        public static ISupport Parameter
-        {
-            get { return _lazyFieldSupport.Value; }
         }
 
         public static ISupport Property

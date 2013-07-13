@@ -1,6 +1,7 @@
 using System;
 using System.Linq.Expressions;
 using System.Reflection;
+using ObjectSupporter.Extensions;
 
 namespace ObjectSupporter.Supporters
 {
@@ -18,23 +19,15 @@ namespace ObjectSupporter.Supporters
                 return methodCallExpression.Method.Name;
             }
 
-            // TODO: This is very dirty hack and needs to be changed!
-            var unaryExpression = expression.Body as UnaryExpression;
-            if (unaryExpression != null)
+            var methodName =
+                expression.Convert(e => e.Body as UnaryExpression)
+                          .Convert(ue => ue.Operand as MethodCallExpression)
+                          .Convert(mc => mc.Object as ConstantExpression)
+                          .Convert(ce => ce.Value as MethodInfo)
+                          .Convert(mi => mi.Name);
+            if (!string.IsNullOrEmpty(methodName))
             {
-                var methodCallExpression1 = unaryExpression.Operand as MethodCallExpression;
-                if (methodCallExpression1 != null)
-                {
-                    var constantExpression = methodCallExpression1.Object as ConstantExpression;
-                    if (constantExpression != null)
-                    {
-                        var methodInfo = constantExpression.Value as MethodInfo;
-                        if (methodInfo != null)
-                        {
-                            return methodInfo.Name;
-                        }
-                    }
-                }
+                return methodName;
             }
 
             throw new InvalidOperationException();
@@ -47,26 +40,12 @@ namespace ObjectSupporter.Supporters
                 return true;
             }
 
-            // TODO: This is very dirty hack and needs to be changed!
-            var unaryExpression = expression.Body as UnaryExpression;
-            if (unaryExpression != null)
-            {
-                var methodCallExpression = unaryExpression.Operand as MethodCallExpression;
-                if (methodCallExpression != null)
-                {
-                    var constantExpression = methodCallExpression.Object as ConstantExpression;
-                    if (constantExpression != null)
-                    {
-                        var methodInfo = constantExpression.Value as MethodInfo;
-                        if (methodInfo != null)
-                        {
-                            return true;
-                        }
-                    }
-                }
-            }
-
-            return false;
+            return expression
+                .Convert(e => e.Body as UnaryExpression)
+                .Convert(ue => ue.Operand as MethodCallExpression)
+                .Convert(mc => mc.Object as ConstantExpression)
+                .Convert(ce => ce.Value as MethodInfo)
+                .Convert(mi => mi != null);
         }
     }
 }
